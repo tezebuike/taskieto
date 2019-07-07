@@ -4,8 +4,10 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all.order(created_at: :desc)
+    @lists = List.all
     @list = List.new
+    @completed_tasks = List.completed_tasks.order(updated_at: :desc)
+    @uncompleted_tasks = List.uncompleted_tasks.order(created_at: :desc)
   end
 
   # GET /lists/1
