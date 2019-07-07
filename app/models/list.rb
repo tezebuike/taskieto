@@ -1,5 +1,7 @@
 class List < ApplicationRecord
 
+  validates :description, presence: true
+  
   scope :completed_tasks, -> {
     where(completed: true)
   }

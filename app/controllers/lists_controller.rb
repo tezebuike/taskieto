@@ -34,7 +34,7 @@ class ListsController < ApplicationController
         format.html { redirect_to root_url, notice: 'List was successfully created.' }
         format.json { render :show, status: :created, location: @list }
       else
-        format.html { render :new }
+        format.html { redirect_to root_url, alert: "We could not add the task. #{@list.errors.full_messages.join(' ')}" }
         format.json { render json: @list.errors, status: :unprocessable_entity }
       end
     end

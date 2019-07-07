@@ -15,3 +15,11 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+$(document).ready(function() {
+  setTimeout(function() {
+    $('#alert_box').fadeOut('slow', function() {
+      $(this).remove();
+    })
+  }, 2000)
+})
