@@ -1,22 +1,21 @@
 
-<h1 class="text-center">Task Lists</h1>
+<h1 class="text-center">Task List</h1>
 <br/>
 <div class="row">
-  <div class="col-4 offset-2">
-    <h4> Task Lists </h4>
-    <table class="table table-bordered">
+  <div class="col-md-5 offset-1">
+    <h4> Task list </h4>
+    <table class="table table-bordered" id="uncompleted-tasks">
       <tbody>
         <tr>
           <td>
             <%= render "form_index" %>
           </td>
         </tr>
-
         <% if @uncompleted_tasks.present? %>
           <% @uncompleted_tasks.each do |list| %>
             <tr>
-              <td>
-                <%= link_to list.description, edit_list_path(list) %>
+              <td id="list-item">
+                <%= list.description %>
                 <span class="float-right">
                   <%= form_for(list) do |f| %>
                   <%= f.text_field :description, type: 'hidden' %>
@@ -38,16 +37,19 @@
     </table>
   </div>
 
-  <div class="col-4">
-    <h4> Completed Tasks </h4>
-    <table class="table table-bordered">
+  <div class="col-md-5">
+    <h4> Completed tasks </h4>
+    <table class="table table-bordered" id="completed-tasks">
       <tbody>
         <% if @completed_tasks.present? %>
           <% @completed_tasks.sort_by(&:updated_at).reverse.each do |list| %>
             <tr>
               <td>
-                <span class="strike-out"><%= list.description %></span> <br> 
-                <span class="small">Completed <%= time_ago_in_words(list.updated_at) %> ago</span>
+                <span class="float-left strike-out"><%= list.description %></span>
+                <span class="float-right">
+                  <%= link_to 'Destroy', list, class:"btn btn-primary btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+                </span>
+                 <br> <span class="float-left small">Completed <%= time_ago_in_words(list.updated_at) %> ago</span>
               </td>
             </tr>
           <% end %>

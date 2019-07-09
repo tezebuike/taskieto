@@ -45,29 +45,6 @@ RSpec.describe ListsController, type: :controller do
     end
   end
 
-  describe "GET #show" do
-    it "returns a success response" do
-      list = List.create! valid_attributes
-      get :show, params: {id: list.to_param}
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}
-      expect(response).to be_successful
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns a success response" do
-      list = List.create! valid_attributes
-      get :edit, params: {id: list.to_param}
-      expect(response).to be_successful
-    end
-  end
-
   describe "POST #create" do
     context "with valid params" do
       it "creates a new List" do
@@ -87,7 +64,7 @@ RSpec.describe ListsController, type: :controller do
       it "returns an error message when format is html" do
         post :create, params: {list: invalid_attributes}
         expect(response).to redirect_to(root_url)
-        expect(flash[:notice]).to match(/List was successfully created./)
+        expect(flash[:alert]).to match(/We could not add the task. Description can't be blank/)
       end
 
       it "returns a 422 response when format is json" do
@@ -123,7 +100,7 @@ RSpec.describe ListsController, type: :controller do
         list = List.create! valid_attributes 
         put :update, params: {id: list.to_param, list: invalid_attributes}
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match(/We could not update the task. *./)
+        expect(flash[:alert]).to match(/We could not update the task./)
       end
 
       it "returns a 422 response when format is json" do

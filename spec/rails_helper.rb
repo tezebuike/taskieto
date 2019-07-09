@@ -2,6 +2,8 @@
 require 'spec_helper'
 require 'capybara/rspec'
 require 'support/features/lists_helper'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
