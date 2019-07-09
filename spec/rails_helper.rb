@@ -1,8 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require 'capybara/rspec'
-require 'support/shoulda_matchers'
-require 'support/factory_bot_rails'
+require 'support/features/lists_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
