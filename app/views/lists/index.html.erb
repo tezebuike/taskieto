@@ -44,10 +44,10 @@
         <% if @completed_tasks.present? %>
           <% @completed_tasks.sort_by(&:updated_at).reverse.each do |list| %>
             <tr>
-              <td>
+              <td id="completed-item">
                 <span class="float-left strike-out"><%= list.description %></span>
                 <span class="float-right">
-                  <%= link_to 'Destroy', list, class:"btn btn-primary btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to 'Delete', list, class:"btn btn-primary btn-sm", method: :delete, data: { confirm: 'Are you sure?' } %>
                 </span>
                  <br> <span class="float-left small">Completed <%= time_ago_in_words(list.updated_at) %> ago</span>
               </td>
