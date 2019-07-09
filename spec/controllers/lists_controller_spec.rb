@@ -28,14 +28,9 @@ RSpec.describe ListsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # List. As you add validations to List, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    {description: "This is my first task"}
-  }
+  let(:valid_attributes) { {description: "This is my first task"} }
 
-  let(:invalid_attributes) {
-    {description: ''}
-  }
-
+  let(:invalid_attributes) { {description: ''} }
 
   describe "GET #index" do
     it "returns a success response" do
@@ -48,9 +43,8 @@ RSpec.describe ListsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new List" do
-        expect {
-          post :create, params: {list: valid_attributes}
-        }.to change(List, :count).by(1)
+        subject { post :create, params: {list: valid_attributes} }
+        expect { subject }.to change(List, :count).by(1)
       end
 
       it "redirects to the root url" do
@@ -63,12 +57,13 @@ RSpec.describe ListsController, type: :controller do
     context "with invalid params" do
       it "returns an error message when format is html" do
         post :create, params: {list: invalid_attributes}
+        error_message = /We could not add the task. Description can't be blank/
         expect(response).to redirect_to(root_url)
-        expect(flash[:alert]).to match(/We could not add the task. Description can't be blank/)
+        expect(flash[:alert]).to match(error_message)
       end
 
       it "returns a 422 response when format is json" do
-        post :create, params: {list: invalid_attributes, :format => :json }
+        post :create, params: {list: invalid_attributes, format: :json }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -76,9 +71,7 @@ RSpec.describe ListsController, type: :controller do
 
   describe "PUT #update" do
     context "with valid params" do
-      let(:new_attributes) {
-        {description: "first task is first"}
-      }
+      let(:new_attributes) { {description: "first task is first"} }
 
       it "updates the requested list" do
         list = List.create! valid_attributes
@@ -97,15 +90,15 @@ RSpec.describe ListsController, type: :controller do
 
     context "with invalid params" do
       it "returns an error message when format is html" do
-        list = List.create! valid_attributes 
+        list = List.create! valid_attributes
         put :update, params: {id: list.to_param, list: invalid_attributes}
         expect(response).to redirect_to(root_url)
         expect(flash[:alert]).to match(/We could not update the task./)
       end
 
       it "returns a 422 response when format is json" do
-        list = List.create! valid_attributes 
-        put :update, params: {id: list.to_param, list: invalid_attributes, :format => :json }
+        list = List.create! valid_attributes
+        put :update, params: {id: list.to_param, list: invalid_attributes, format: :json }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
@@ -114,9 +107,8 @@ RSpec.describe ListsController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested list" do
       list = List.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: list.to_param}
-      }.to change(List, :count).by(-1)
+      subject { delete :destroy, params: {id: list.to_param} }
+      expect { subject }.to change(List, :count).by(-1)
     end
 
     it "redirects to the root url" do

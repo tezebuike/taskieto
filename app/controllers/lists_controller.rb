@@ -12,16 +12,13 @@ class ListsController < ApplicationController
 
   # GET /lists/1
   # GET /lists/1.json
-  def show
-  end
+  def show; end
 
   # GET /lists/new
-  def new
-  end
+  def new; end
 
   # GET /lists/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /lists
   # POST /lists.json
@@ -64,6 +61,7 @@ class ListsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_list
       @list = List.find(params[:id])

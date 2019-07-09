@@ -27,13 +27,13 @@ RSpec.describe List, type: :model do
     end
   end
 
-   describe '.uncompleted_tasks' do
+  describe '.uncompleted_tasks' do
     it 'returns uncompleted tasks' do
       first_list = create(:list, completed: false)
       second_list = create(:list, completed: false)
       third_list = create(:list, completed: true)
 
-       lists = List.uncompleted_tasks
+      lists = List.uncompleted_tasks
 
       expect(lists).to include(first_list)
       expect(lists).to include(second_list)

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "List", :type => :feature do
+RSpec.feature "List", type: :feature do
 
   scenario "Visiting the landing page for the first time" do
     visit root_path
@@ -39,7 +39,7 @@ RSpec.feature "List", :type => :feature do
       expect(page).to have_content('Shop for mom')
       expect(first('#list-item')).to have_button('Complete')
     end
-    
+
     within '#completed-tasks' do
       expect(page).to have_content('Hola! You have no completed tasks')
     end
@@ -48,7 +48,7 @@ RSpec.feature "List", :type => :feature do
 
   scenario "Completing a task" do
     populate_tasks
-    
+
     first('#list-item').click_button('Complete')
     within '#uncompleted-tasks' do
       expect(page).to have_content('Walk the dog')
@@ -62,12 +62,12 @@ RSpec.feature "List", :type => :feature do
     end
     expect(page.current_path).to eq(root_path)
   end
-  
+
   scenario "Deleting a completed task" do
     populate_tasks
-    
+
     first('#list-item').click_button('Complete')
-    
+
     within '#completed-tasks' do
       first('#completed-item').click_link('Delete')
       expect(page).not_to have_content('Shop for mom')

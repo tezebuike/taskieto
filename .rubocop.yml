@@ -7,6 +7,9 @@ AllCops:
     - bin/*
     - config/**/*
     - Gemfile
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - Rakefile
   DisplayCopNames: true
   DisplayStyleGuide: true
   TargetRubyVersion: 2.4
