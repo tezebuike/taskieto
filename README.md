@@ -1,24 +1,42 @@
-# README
+# Taskieto
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Taskieto is a simple todo app built with Rails application that allows you to:
+ - Create tasks
+ - View all tasks at the same time
+ - Complete single tasks
+ - Delete a completed task
 
-Things you may want to cover:
+In order to set this application run running on your machine, you would need to note the following.
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+You would need to have the following running:
+  - Ruby `at least version 2.4.2`
+  - Database - `postgreSQL`
+  - Bundler
 
-* Configuration
+## Setting Up
 
-* Database creation
+  1. Clone the repository into the folder of your choice
+```
+$ git clone https://github.com/tezebuike/taskieto.git
+cd taskieto
+```
+  2. Run setup to install the gems configurations and setup the database.
 
-* Database initialization
+```
+$ rails setup
+```
 
-* How to run the test suite
+  3. Run rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ rails s
+```
 
-* Deployment instructions
+  4. Go to http://localhost:3000/
 
-* ...
+## To run the test suite
+  On the terminal, navigate to taskieto folder
+  * Type `rspec` to run the full tests specs
+  * Check Coverage/index.html to check the coverage
