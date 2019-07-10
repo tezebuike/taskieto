@@ -36,7 +36,7 @@ $ rails s
 
   4. Go to http://localhost:3000/
 
-## To run the test suite
+## To run the test suite and check coverage
   On the terminal, navigate to taskieto folder
   * Type `rspec` to run the full tests specs
-  * Check Coverage/index.html to check the coverage
+  * Go to Coverage/index.html to check the coverage
