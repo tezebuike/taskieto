@@ -43,8 +43,7 @@ RSpec.describe ListsController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new List" do
-        subject { post :create, params: {list: valid_attributes} }
-        expect { subject }.to change(List, :count).by(1)
+        expect { post :create, params: {list: valid_attributes} }.to change(List, :count).by(1)
       end
 
       it "redirects to the root url" do
@@ -107,8 +106,7 @@ RSpec.describe ListsController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested list" do
       list = List.create! valid_attributes
-      subject { delete :destroy, params: {id: list.to_param} }
-      expect { subject }.to change(List, :count).by(-1)
+      expect { delete :destroy, params: {id: list.to_param} }.to change(List, :count).by(-1)
     end
 
     it "redirects to the root url" do
